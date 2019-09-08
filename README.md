@@ -9,4 +9,4 @@ Details on specific datasets could be found in [Wiki](https://github.com/olexand
 
 ## Acknowledgement
 
-Project-related activities are performed within the framework of Nordplus project NPHZ-2018/10096 (Teaching development of augmented reality storytelling for urban regeneration)
+Project-related activities are performed within the framework of Nordplus project NPHZ-2018/10096 (Teaching development of augmented reality storytelling for urban regeneration). 
