@@ -1,5 +1,5 @@
 ```
-Tallinn University, Information Society Technologies
+Tallinn University, School of Digital Technologies
 ```
 The aim of opendata-urban-ee project is to perform a comprehensive inventory of open datasets, related to urban landscape, for the further purpose of developing interactive data-based applications. 
 
