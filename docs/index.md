@@ -1,7 +1,3 @@
----
-title: index
---- 
-
 ```
 Tallinn University
 ```
