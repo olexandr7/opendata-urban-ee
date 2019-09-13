@@ -1,4 +1,2 @@
 theme: jekyll-theme-cayman
 title: opendata-urban-ee
-
-{% include header.md %}
