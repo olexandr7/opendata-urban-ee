@@ -1,5 +1,12 @@
+---
+title: Home
+layout: template
+filename: index.md
+--- 
+
+
 ```
-Tallinn UniversityYYYYY
+Tallinn University
 ```
 ## Overview 
 
