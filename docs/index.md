@@ -1,6 +1,5 @@
 ---
 title: index
-layout: template
 --- 
 
 ```
