@@ -1,7 +1,5 @@
 ```
-<p align="justify">
 Tallinn University
-</p>
 ```
 ## Overview 
 
