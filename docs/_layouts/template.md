@@ -2,3 +2,4 @@
     <a href={{ page.filename }}>{{ page.title }}</a>
 {% endfor %}
 
+{{content}}
