@@ -1,9 +1,3 @@
----
-title: Home
-layout: template
---- 
-
-
 ```
 Tallinn University
 ```
