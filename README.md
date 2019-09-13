@@ -1,5 +1,5 @@
 ```
-Tallinn University, School of Digital Technologies
+<p style="text-align: center;">Tallinn University</p>
 ```
 ## Overview 
 
