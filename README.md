@@ -1,5 +1,5 @@
 ```
-<p style="text-align: center;">Tallinn University</p>
+<p style="text-align: center">Tallinn University</p>
 ```
 ## Overview 
 
