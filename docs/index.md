@@ -1,3 +1,8 @@
+---
+title: index
+layout: template
+--- 
+
 ```
 Tallinn University
 ```
