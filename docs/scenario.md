@@ -27,9 +27,14 @@ Extracted datasets (.csv) are also available in [Github](https://github.com/olex
 
 # Vizualization
 
-Resulting map could be found at [NarvaOpenData app](https://olcher.shinyapps.io/NarvaOpenData/)
+<div class="container">
+        <iframe  src="https://olcher.shinyapps.io/NarvaOpenData/" frameborder="0" allowfullscreen></iframe>
+</div>
 
-<iframe src="https://olcher.shinyapps.io/NarvaOpenData/">
-</iframe>
+Alternative map link: [NarvaOpenData app](https://olcher.shinyapps.io/NarvaOpenData/)
 
 ## Insights 
+
++ Only 4 apartment buildings (hoone_tyyp == "Korterelamud") in Narva have energoefficiency class assigned
++ Out of those 4, highest class is "C"
++ Energoefficient houses closer to the river seem like a safer place in terms of 'Varavastased süüteod'
