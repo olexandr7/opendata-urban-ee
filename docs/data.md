@@ -1,6 +1,8 @@
 # Urban data landscape 
 
-The page provides an overview of currently available primary open data sets, related to urban planning/development/transformation. Details on specific datasets could be found in [Data Wiki](https://github.com/olexandr7/opendata-urban-ee/wiki). 
+The page provides an overview of currently available primary open data sets, related to urban planning/development/transformation. 
+
+Details on specific datasets could be found in [Data Wiki](https://github.com/olexandr7/opendata-urban-ee/wiki). 
 
 Unless provided specifically, data description is taken from [RIHA catalog for State’s information system](https://www.riha.ee/Avaleht)
 
