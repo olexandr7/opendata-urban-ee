@@ -5,6 +5,7 @@ Keit is a a fresh PhD graduate from the University of Tartu, relocating to Narva
 Map-based vizualization of energoefficient houses locations combined with crimes against property. 
 
 # Datasets 
+
 |Source|Storage|Temporality| 
 |---|---|---|
 |[Ehitisregister](https://avaandmed.ehr.ee/)|[Hoone energia märgised](https://avaandmed.ehr.ee/)|1994-2019|
@@ -14,6 +15,7 @@ Extracted datasets (.csv) are also available in [Github](https://github.com/olex
 
 
 ## Primary columns
+
 |Dataset|Column name|Column type| 
 |---|---|---|
 |Varavastased süüteod|ValdLinnNimetus|string|
@@ -28,7 +30,7 @@ Extracted datasets (.csv) are also available in [Github](https://github.com/olex
 # Vizualization
 
 <div class="container">
-        <iframe  src="https://olcher.shinyapps.io/NarvaOpenData/" frameborder="0" allowfullscreen></iframe>
+        <iframe  src="https://olcher.shinyapps.io/NarvaOpenData/" frameborder="0" width = 600px height = 300px allowfullscreen></iframe>
 </div>
 
 Alternative map link: [NarvaOpenData app](https://olcher.shinyapps.io/NarvaOpenData/)
