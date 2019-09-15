@@ -29,9 +29,8 @@ Extracted datasets (.csv) are also available in [Github](https://github.com/olex
 
 # Vizualization
 
-<div class="container">
-        <iframe  src="https://olcher.shinyapps.io/NarvaOpenData/" frameborder="0" width = 600px height = 300px allowfullscreen></iframe>
-</div>
+<iframe  src="https://olcher.shinyapps.io/NarvaOpenData/" frameborder="0" width = "600px" height = "300px"></iframe>
+
 
 Alternative map link: [NarvaOpenData app](https://olcher.shinyapps.io/NarvaOpenData/)
 
