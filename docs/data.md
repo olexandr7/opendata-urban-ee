@@ -5,6 +5,7 @@ The page provides an overview of currently available primary open data sets, rel
 Unless provided specifically, data description is taken from [RIHA catalog for State’s information system](https://www.riha.ee/Avaleht)
 
 ## Primary datasets
+
 |Authority|Infosüsteem - EE|Information system - EN|Data storage|Data description|
 | --- | --- | --- | --- | --- |
 |Ministry of Economic Affairs and Communications|Majandustegevuse register|Registry of Economic Activities|[Avaandmed_ettevotjad.xml](https://mtr.mkm.ee/opendata/avaandmed_ettevotjad.xml)|[MTR](https://www.riha.ee/Infos%C3%BCsteemid/Vaata/mtr)|
