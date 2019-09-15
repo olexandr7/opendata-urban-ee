@@ -32,6 +32,7 @@ Extracted datasets (.csv) are also available in [Github](https://github.com/olex
 </div>
 
 Alternative map link: [NarvaOpenData app](https://olcher.shinyapps.io/NarvaOpenData/)
+Transformed datasets (.csv) are also available in [Github](https://github.com/olexandr7/opendata-urban-ee/tree/master/demo%20scenario/transfromed%20datasets)
 
 ## Insights 
 
