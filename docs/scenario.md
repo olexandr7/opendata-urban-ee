@@ -13,7 +13,7 @@ Map-based vizualization of energoefficient houses locations combined with crimes
 Extracted datasets (.csv) are also available in [Github](https://github.com/olexandr7/opendata-urban-ee/tree/master/demo%20scenario/original%20datasets)
 
 
-## Dataset columns
+## Primary columns
 |Dataset|Column name|Column type| 
 |---|---|---|
 |Varavastased süüteod|ValdLinnNimetus|string|
