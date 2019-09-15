@@ -13,14 +13,14 @@ Map-based vizualization of energoefficient houses locations combined with crimes
 Extracted datasets (.csv) are also available in [Github](https://github.com/olexandr7/opendata-urban-ee/tree/master/demo%20scenario/original%20datasets)
 
 
-## Primary dataset columns
+## Dataset columns
 |Dataset|Column name|Column type| 
 |---|---|---|
 |Varavastased süüteod|ValdLinnNimetus|string|
 |Varavastased süüteod|KohtLiik|string| 
 |Varavastased süüteod|Kahjusumma|number| 
-|Varavastased süüteod|Lat(EPSG:3301)|coordinates| 
-|Varavastased süüteod|Lon(EPSG:3301)|coordinates| 
+|Varavastased süüteod|Lat-EPSG:3301|coordinates| 
+|Varavastased süüteod|Lon-EPSG:3301|coordinates| 
 |Hoone energia märgised|taisaadress|string| 
 |Hoone energia märgised|hoone_tyyp|string| 
 |Hoone energia märgised|energia_klass|string| 
