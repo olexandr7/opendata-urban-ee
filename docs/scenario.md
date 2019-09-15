@@ -4,9 +4,9 @@ Keit is a a fresh PhD graduate from the University of Tartu, relocating to Narva
 ## Idea
 Map-based vizualization of energoefficient houses locations combined with crimes against property. 
 
-# Datasets 
+# Data
 
-|Source|Storage|Temporality| 
+|Source|Dataset|Temporality| 
 |---|---|---|
 |[Ehitisregister](https://avaandmed.ehr.ee/)|[Hoone energia märgised](https://avaandmed.ehr.ee/)|1994-2019|
 |[PPA/Infosüsteem POLIS](https://www.politsei.ee/et/avaandmed)|[Varavastased süüteod](https://opendata.smit.ee/ppa/csv/vara_1.csv)|2018-2019|
@@ -34,7 +34,7 @@ Alternative map link: [NarvaOpenData app](https://olcher.shinyapps.io/NarvaOpenD
 
 Transformed datasets (.csv) are also available in [Github](https://github.com/olexandr7/opendata-urban-ee/tree/master/demo%20scenario/transfromed%20datasets)
 
-Data transformation code in R could be found in [scenario.r](https://github.com/olexandr7/opendata-urban-ee/blob/master/demo%20scenario/scenario.Rmd)
+Data transformation script (R) could be found in [scenario.r](https://github.com/olexandr7/opendata-urban-ee/blob/master/demo%20scenario/scenario.Rmd)
 
 ## Insights 
 
