@@ -1,0 +1,118 @@
+---
+title: "Scenario code"
+output: html_notebook
+---
+
+
+Data loading: 
+Importaint to specify encoding UTF-8 - to support Estonian locale
+```{r}
+crimes <- read.delim("C:/Users/olexa/Desktop/Datasets/crimes.csv", encoding="UTF-8")
+
+```
+
+
+```{r}
+#Filtering out only crimes from Narva that were perpetuated in apartments
+crimes_flats_narva <- dplyr::filter(crimes, KohtLiik == "KORTER", ValdLinnNimetus == "Narva linn")
+
+
+#Coordinates are provided as squares 500*500 to mask exact crime location. 
+#So I've decided to map just the middle points (250, 250) for each square, should be a grid
+#coordinates are first separated in 2(4) columns 
+crimes_flats_narva<-separate(crimes_flats_narva, Lest_X, into = c("Lest_X_1", "Lest_X_2"), sep = '-')
+
+crimes_flats_narva<-separate(crimes_flats_narva, Lest_Y, into = c("Lest_Y_1", "Lest_Y_2"), sep = '-')
+
+#Calculating middle points for squares as start+end/2
+crimes_flats_narva <- crimes_flats_narva %>% mutate(
+  LEST_X_Avg = (as.numeric(Lest_X_1)+as.numeric(Lest_X_2))/2,
+  LEST_Y_Avg = (as.numeric(Lest_Y_1)+as.numeric(Lest_Y_2))/2
+)
+
+#Separate coordinate columns are now merged into one to simplify the further conversion between coordinate systems
+crimes_flats_narva<-unite(crimes_flats_narva, LEST_X_Avg, LEST_Y_Avg, col= 'L-EST', sep = ',')
+```
+
+
+```{r}
+#column with coordinates is extracted for transformation
+crimes_flats_narva_coordinates <- select(crimes_flats_narva, 'L-EST')
+
+
+#External file extraction
+write.csv(crimes_flats_narva_coordinates,"NarvaFlatCrimeCoords.csv", row.names = FALSE)
+
+#Loading the file to external converter as the coordinates were supplied in EPSG:3301 - Estonia-centric coordinate system
+#https://www.maaamet.ee/rr/geo-lest/
+
+#Manual manipulation to add column to the initial dataset
+coordinates <- read.delim("C:/Users/olexa/Desktop/Datasets/Coordinates.csv", encoding="UTF-8")
+
+
+#Unified coordinates column is separated in Lat and Lon
+coordinates<-separate(coordinates, WGS84, into = c("Coord_X", "Coord_Y"), sep = ',')
+
+write.csv(coordinates,"Coords.csv", row.names = FALSE)
+```
+
+
+```{r}
+Coords <- read.csv("C:/Users/olexa/Desktop/Datasets/Coords.csv", encoding="UTF-8")
+```
+
+```{r}
+#Join the obtained WGS84 coordinates back to the initial dataset
+crimes_flats_narva <-merge(crimes_flats_narva, Coords, by="JuhtumId")
+write.csv(crimes_flats_narva,"CrimesFlatNarva.csv", row.names = FALSE)
+```
+
+Required transformations for the second dataset (energy class buildings)
+
+```{r}
+#Reading the file
+energy_class_1994_2019 <- read.csv("C:/Users/olexa/Desktop/Datasets/energy_class.csv", encoding="UTF-8", sep=";")
+```
+
+
+```{r}
+#Filtering out only addresses in Narva city 
+narva_energy_class_flats <- dplyr::filter(energy_class_1994_2019, grepl('Narva linn', taisaadress))
+
+#Filtering out only buildings that are residential
+narva_energy_class_flats <- dplyr::filter(narva_energy_class_flats, hoone_tyyp == "KORTERELAMUD")
+```
+
+
+Transformations for geodocoding
+```{r}
+library (ggmap)
+#Google API key has to be registered for using the geocoding services
+register_google(key = "AIzaSyC5ldbKPSLz2R5aulkA_PU-HbL-o3doNbQ")
+
+#Dataset is converted to data.frame format as it won't be valid for mutate_geocode function otherwise
+narva_energy_class_flats <- data.frame(lapply(narva_energy_class_flats, as.character), stringsAsFactors=FALSE)
+
+#Addresses in 'taisaadress' are geocoded via the Google API as the coordinates were not provided in the initial dataset. Geocoding (address->coordinates) is done with mutate_geocode function
+narva_energy_class_flats <- narva_energy_class_flats %>% mutate_geocode(taisaadress)
+
+#Writing out the resulting file to have a copy just in case
+write.csv(narva_energy_class_flats,"NarvaEnergyClassFlats.csv", row.names = FALSE)
+```
+
+Now that we have coordinates and relevant crimes/apartments in the datasets, it's time for plotting them on the maps
+```{r}
+#Mapping is done via the Leaflet library
+library(leaflet)
+
+pal2 <- colorFactor(c("orange", "red"), domain = c("ENERGIAKL_C", "ENERGIAKL_G"))
+
+#Map is initizlized with chosen set of tiles (Esri)
+#Two sets of markers are initiated - for crimes data (plotted with #addCircleMarkers) and for  energy class (plotted with addMarkers)
+m <- leaflet() %>%
+  addProviderTiles(providers$Esri.WorldTopoMap) %>%
+  addCircleMarkers(data = CrimesFlatNarva, lat = ~Coord_X, lng = ~Coord_Y, popup = ~Kahjusumma, radius=20) %>%
+addMarkers(data = NarvaEnergyClassFlats, lat = ~lat, lng = ~lon, popup = ~energia_klass)
+
+m  # Print the map
+```
