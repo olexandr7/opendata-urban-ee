@@ -23,12 +23,8 @@ NarvaEnergyClassFlats <- read.csv("NarvaEnergyClassFlats.csv", header=TRUE)
 ui <- fluidPage(
 
     # Application title
-    titlePanel("Narva housing - demo vizualization"),
+    #titlePanel("Narva housing - demo vizualization"),
     
-    mainPanel(
-        h6("Buildings with energoefficiency class 1994-2019"),
-        h6("Crimes against property 2018-2019")
-    ),
 
     leafletOutput("mymap")
     
