@@ -2,7 +2,7 @@
 Keit is a a fresh PhD graduate from the University of Tartu, relocating to Narva as he's been offered a Lecturer position at Narva Colledge. Keit is fed up with renting and wishes to aquire personal property via applying for a home loan. Keit would be using Kredex guarantee, so he's looking for a house with high energoefficiency rating. Since the initial deposit would take up a substantial share of savings and is a major future investment, Keit would like to settle in a city district with minimal rate of recent crimes against property. 
 
 ## Workflow
-Keit intends to vizualize locations of enegroefficient houses and see if there are any overlaps with zones where crimes against property were commited. In order to do the vizualizations, Keit gets preprocessed datasets from the Narva open data portal and utilizes basic visualization skills in R (open-source), obtained while attending "Empowering Urban Disruption" MOOC provided as part of "Welcome to Narva" information package.  
+Keit intends to vizualize locations of enegroefficient houses and see if there are any overlaps with zones where crimes against property were commited. In order to do the vizualizations, Keit gets preprocessed datasets from the Narva open data portal and utilizes basic visualization skills in R (open-source), obtained while attending "Empowering Urban Disruption" MOOC provided as a part of "Welcome to Narva" information package.  
 
 # Data
 
