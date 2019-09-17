@@ -1,7 +1,7 @@
-# Scenario 1
+# Scenario 1 - Citizen Science
 Keit is a a fresh PhD graduate from the University of Tartu, relocating to Narva as he's been offered a Lecturer position at Narva Colledge. Keit is fed up with renting and wishes to aquire personal property via applying for a home loan. Keit would be using Kredex guarantee, so he's looking for a house with high energoefficiency rating. Since the initial deposit would take up a substantial share of savings and is a major future investment, Keit would like to settle in a city district with minimal rate of recent crimes against property. 
 
-## Idea
+## Workflow
 Map-based vizualization of energoefficient houses locations combined with crimes against property. 
 
 # Data
