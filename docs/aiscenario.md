@@ -9,4 +9,7 @@ Aksinia accesses the AI-enhanced Narva open data portal and types in multiple qu
 
 # Technology
  
-Natural Language-based data vizualuzation solutions are already available on the market and are featured in latest generation of business intelligence tools like Tableau [(Ask Data)](https://www.tableau.com/products/new-features/ask-data) and MicroStrategy [(Natural Language Query)](https://community.microstrategy.com/s/article/Natural-Language-Query-in-A-Nutshell-MicroStrategy-11-0?language=en_US). Overall idea is that user types in the desired question and the underlying AI-based engine provides an answer in form of suitable vizualzation or story in plain words.
+Natural Language-based data storytelling solutions are already available on the market and are featured in latest generation of business intelligence tools like Tableau [(Ask Data)](https://www.tableau.com/products/new-features/ask-data) and MicroStrategy [(Natural Language Query)](https://community.microstrategy.com/s/article/Natural-Language-Query-in-A-Nutshell-MicroStrategy-11-0?language=en_US). Overall idea is that user types in the desired question and the underlying AI-based engine provides an answer in form of suitable vizualzation or story in plain words. There also several standalone providers of embedded natural language processing, with most prominent according to Forrester Research being [Automated Insights](https://automatedinsights.com/natural-language-generation/) and [Narrative Science](https://narrativescience.com/). 
+
+
+
