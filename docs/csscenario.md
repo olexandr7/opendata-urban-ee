@@ -31,7 +31,7 @@ Extracted datasets (.csv) are also available in [Github](https://github.com/olex
 
 <iframe src="https://olcher.shinyapps.io/NarvaOpenData/" frameborder="0" width = "900px" height = "400px"></iframe>
 
-### Description 
+## Description 
 **Blue markers** - individual locations of residential buildings in Narva that have energoefficiency rating assigned, dataset from Ehitisregister, 1994-2019
 
 **Blue circles** - zones (center points of 500m * 500m rectangles as provided by PPA to obfuscate actual crime scenes, originally in EPSG:3301 coordinate system) where crimes against property (crime location - apartment) were commited in Narva, color intensity corresponds to number of crimes within the zone, dataset by PPA (from POLIS infosystem), 2018-2019
