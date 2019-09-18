@@ -1,6 +1,6 @@
 # Scenario 2 - Artificial Intelligence
 
-Aksinia is a curator at Narva Castle, interested in improving the cityscape of Narva by installing a multitude of minigardens across the currently delapidated areas. Before filing an external funding proposal she wishes to collect data on potential garden spots, planned city greenery expenses for upcoming fiscal year and available air quality measurements across city districts. 
+Aksinia is a curator at Narva Castle and avid recreational horticulturist, interested in improving the cityscape of Narva by installing a multitude of minigardens across the currently delapidated areas. Before filing an external funding proposal she wishes to collect data on potential garden spots, planned city greenery expenses for upcoming fiscal year and available air quality measurements across city districts. 
 
 ## Workflow
 
