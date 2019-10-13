@@ -1,0 +1,186 @@
+---
+title: "Ehitisregister"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+```
+
+
+
+
+
+```{r}
+#Filtering out info from ADDRESSES dataset
+#Info on just address
+narva_address <- dplyr::filter(ad_aadress_2000_01_2019_10_13,tase2_nimetus == "Narva linn",tase5_nimetus == "Rüütli tn", lahiaadress == "Rüütli tn 2")
+```
+
+
+```{r}
+#Establishing connection between address and building
+#Obtained info on ehit_id - foreign key for other datasets
+narva_address_build <- dplyr::filter(ehitis_aadress_1994_01_2019_10_13,
+ehit_id == "3315330")                                     
+# id == "2551280")
+```
+
+
+
+```{r}
+#Establishing connection between building and PARTS OF THE BUILDING
+#Looks like it's apartment-specific information
+narva_building_components <- dplyr::filter(eh_ehitis_osad_1994_01_2019_10_13 ,ehit_id == "3315330")
+```
+
+```{r}
+#Establishing connection between building and energoefficiency details
+#NOT FOUND in this case - building not efficient
+narva_building_energy <- dplyr::filter(hoone_energia_margised_2000_01_2019_10_13,taisaadress == "Ida-Viru maakond, Narva linn, Rüütli tn 2")
+```
+
+
+```{r}
+#Establishing connection between building and building usage
+narva_building_usage <- dplyr::filter(ehitis_kaos_2000_01_2019_10_13,ehit_id == "3315330")
+```
+
+```{r}
+#Establishing building usage
+narva_usage_details <- merge(narva_building_usage,  kl_kasutusotstarbed_2000_01_2019_10_13, by.x="kaos_id", by.y="id")  
+
+```
+
+
+```{r}
+#Establishing BUILDING details
+#Most valuable info so far
+narva_building_details <- dplyr::filter(eh_ehitised_2000_01_2019_10_13,taisaadress == "Ida-Viru maakond, Narva linn, Rüütli tn 2")
+```
+
+
+
+```{r}
+#Establishing TECHNICAL building details
+narva_building_technical <- dplyr::filter(eh_tehna_1994_01_2019_10_13,ehit_id == "3315330")
+```
+
+```{r}
+#Establishing list of applicable technical details
+narva_building_tech_details <- merge(kl_tehna_1994_01_2019_10_13,  narva_building_technical, by.x="kood", by.y="tena_id")
+
+library(dplyr)
+#Removing duplicates
+narva_building_tech_details <- distinct(narva_building_tech_details,kl_kood, nimetus, .keep_all= TRUE)
+
+```
+
+
+
+```{r}
+#Establishing registry classificators
+View(kl_element_1994_01_2019_10_13)
+```
+
+
+
+```{r}
+#Preparing dataset for vizualization - Building level
+building_viz <- select (narva_building_details, ehit_id, taisaadress, lahiaadress, max_korruste_arv, tubade_arv, korterite_arv, elamispind, eluruumi_pind, esmane_kasutus, lift)
+
+#Mutating the value as code is originally NULL
+#Manual data correction
+building_viz <- building_viz %>% mutate(ehit_id = replace(ehit_id, taisaadress == "Ida-Viru maakond, Narva linn, Rüütli tn 2", 3315330))
+
+#UTF8 is not supported by shiny ?
+building_viz <- building_viz %>% mutate(taisaadress = replace(taisaadress, ehit_id == "3315330", "Ida-Viru maakond, Narva linn, Ruutli tn 2"))
+
+building_viz <- building_viz %>% mutate(lahiaadress = replace(lahiaadress, ehit_id == "3315330", "Ruutli tn 2"))
+                   
+```
+
+
+
+```{r}
+#Preparing dataset for vizualization - Technical components level
+tech_viz <- select (narva_building_tech_details, ehit_id, kood, kl_kood, nimetus)
+  
+tech_viz <- select (narva_building_tech_details,kl_kood, nimetus)
+
+library(reshape)
+tech_viz <- melt(tech_viz, id=(c("kl_kood", "nimetus")))
+
+tech_viz <- t (tech_viz)
+
+tech_viz <- data.frame(lapply(tech_viz, as.character), stringsAsFactors=FALSE)
+
+colnames(tech_viz)
+```
+
+
+```{r}
+#Transformations for geocoding
+
+library (ggmap)
+#Google API key has to be registered for using the geocoding services
+register_google(key = "")
+
+#Dataset is converted to data.frame format as it won't be valid for mutate_geocode function otherwise
+building_viz <- data.frame(lapply(building_viz, as.character), stringsAsFactors=FALSE)
+
+#Addresses in 'taisaadress' are geocoded via the Google API as the coordinates were not provided in the initial dataset. Geocoding (address->coordinates) is done with mutate_geocode function
+building_viz <- building_viz %>% mutate_geocode(taisaadress)
+
+#Writing out the resulting file to have a copy just in case
+write.csv(building_viz,"BuildingVizNarva.csv", row.names = FALSE)
+
+```
+
+
+```{r}
+#Mapping is done via the Leaflet library
+library(leaflet)
+
+icons <- awesomeIcons(
+  icon = 'home',
+  iconColor = 'white',
+  library = 'ion',
+  markerColor = 'purple'
+)
+
+#Map is initizlized with chosen set of tiles (Esri)
+#Two sets of markers are initiated - for crimes data (plotted with #addCircleMarkers) and for  energy class (plotted with addMarkers)
+m <- leaflet() %>%
+  addProviderTiles(providers$Stamen.Toner) %>%
+ addAwesomeMarkers(data = building_viz,lat = ~lat, lng = ~lon, icon=icons, popup= ~paste(
+        "Address:", lahiaadress,"<br>", 
+        "Floors:", max_korruste_arv,"<br>", 
+        "Rooms:", tubade_arv,"<br>", 
+        "Apartments:",korterite_arv ,"<br>",
+        "Elevators:",lift ,"<br>",
+        "Living area:",elamispind ,"<br>",
+        "Dwelling area:",eluruumi_pind ,"<br>",
+        "Year of construction:",esmane_kasutus ,"<br>"
+        )) 
+                                                                          
+m  # Print the map
+```
+
+
+
+
+
+
+
+
+
+
+```{r}
+```
+
