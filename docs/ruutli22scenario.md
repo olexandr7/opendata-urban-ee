@@ -6,8 +6,7 @@ Demo application that displays data on the building located in Narva Old Town - 
 
 # Data
 
-Ehitisregister
-Extracted datasets are also available in [Github](https://github.com/olexandr7/opendata-urban-ee/tree/master/ruutli22%20scenario)
+Ehitisregister, subset of extracted datasets is also available in [Github](https://github.com/olexandr7/opendata-urban-ee/tree/master/ruutli22%20scenario)
 
 # Vizualization
 
